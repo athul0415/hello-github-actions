@@ -37,7 +37,7 @@ jobs:
           
       - name: Get changed files in the docs folder
         id: changed-files-specific
-        uses: athul0415/hello-github-actions@v3
+        uses: athul0415/hello-github-actions@v35
         with:
           files: |
             .github/workflows/**
