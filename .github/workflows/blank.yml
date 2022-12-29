@@ -7,6 +7,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
+    paths:
+      - .github/workflows/**
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -32,3 +34,16 @@ jobs:
         run: |
           echo "List files and folders"
           ls -a 
+          
+      - name: Get changed files in the docs folder
+        id: changed-files-specific
+        uses: hello-github-actions/changed-files@v3
+        with:
+          files: |
+            .github/workflows/**
+
+      - name: Run step if any file(s) in the docs folder change
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: |
+          echo "One or more files in the docs folder has changed."
+          echo "List all the files that have changed: ${{ steps.changed-files-specific.outputs.all_changed_files }}"
