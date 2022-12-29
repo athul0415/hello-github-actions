@@ -39,7 +39,7 @@ jobs:
           
       - name: Get changed files in the docs folder
         id: changed-files-specific
-        uses: athul0415/hello-github-actions@v1
+        uses: athul0415/hello-github-actions@v2
             
       - name: Run step if any file(s) in the docs folder change
         if: steps.changed-files-specific.outputs.any_changed == 'true'
