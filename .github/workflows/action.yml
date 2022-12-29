@@ -23,7 +23,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v1
         with:
            fetch-depth: 0
 
@@ -39,8 +39,7 @@ jobs:
           
       - name: Get changed files in the docs folder
         id: changed-files-specific
-        uses: ./
-        #uses: athul0415/hello-github-actions@v3
+        uses: athul0415/hello-github-actions@v1
             
       - name: Run step if any file(s) in the docs folder change
         if: steps.changed-files-specific.outputs.any_changed == 'true'
